@@ -1,5 +1,6 @@
 .comment {
   margin: 10px;
+  outline: 1px solid black;
   /* display: flex; */
 }
 .header {
@@ -8,7 +9,8 @@
 }
 .reply {
   padding-left: 50px;
-  
+  outline: 1px solid black;
+  margin: 10px;
 }
 .left-toolbar {
 

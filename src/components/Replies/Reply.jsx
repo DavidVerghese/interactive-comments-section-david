@@ -21,16 +21,16 @@ function Reply({ comment, currentUser, parentComment, deleteReply }) {
             <p>user: {user.username}</p>
             <img src={user.image.png} alt="avatar" />
 
-            {currentUser && currentUser.username === user.username ? (
+            {/* {currentUser && currentUser.username === user.username ? (
            <div>
             <div> <button onClick={() => setToEdit(true)}>Edit</button></div>
             <button onClick={()=>deleteReply(parentComment,id)}>Delete</button>
           </div> 
-        ) : null}
+        ) : null} */}
       
       
-            <button>Reply</button>
-            <p>created at: {createdAt}</p>
+            {/* <button>Reply</button> */}
+            <p>{createdAt}</p>
           </div>
         </div>
       
