@@ -1,6 +1,15 @@
 .comment {
   margin: 10px;
+  /* display: flex; */
+}
+.header {
+  display: flex;
+  justify-content: space-around;
 }
 .reply {
   padding-left: 50px;
+  
+}
+.left-toolbar {
+
 }

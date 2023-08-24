@@ -4,7 +4,7 @@ function CommentForm({ onSubmit, currentUser }) {
   const [content, setContent] = useState('');
   const [user, setUser] = useState(currentUser);
   // You can add more state for other fields like createdAt and score
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
 

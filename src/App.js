@@ -64,6 +64,7 @@ function App() {
   };
 
   const upvote = (commentId, commentScore) => {
+    console.log('clicked!')
     fetch(`http://localhost:3001/comments/${commentId}`, {
       method: 'PATCH', 
       headers: {
@@ -120,13 +121,34 @@ function App() {
       .catch(error => console.error('Error updating comment content:', error));
   };
 
+  const deleteReply = async (commentId, replyId) => {
+    try {
+      const response = await fetch(`http://localhost:3001/comments/${commentId}/replies/${replyId}`, {
+        method: 'DELETE'
+      });
+
+      if (response.ok) {
+        const updatedComments = comments.map(comment =>
+          comment.id === commentId
+            ? { ...comment, replies: comment.replies.filter(reply => reply.id !== replyId) }
+            : comment
+        );
+        setComments(updatedComments);
+        console.log('Reply deleted successfully');
+      } else {
+        console.error('Failed to delete reply:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error deleting reply:', error);
+    }
+  };
 
   
 
   return (
     <div >
       {comments.map((comment, key) => (
-        <Comment upvote={upvote} downvote={downvote} updateCommentContent={updateCommentContent} key={key} comment={comment} currentUser={currentUser} onDelete={handleDeleteComment} />
+        <Comment deleteReply={deleteReply} isReply={false} upvote={upvote} downvote={downvote} updateCommentContent={updateCommentContent} key={key} comment={comment} currentUser={currentUser} onDelete={handleDeleteComment} />
       ))}
       <CommentForm currentUser={currentUser} onSubmit={handleCommentSubmit}/>
     </div>
